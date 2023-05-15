@@ -14,3 +14,11 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+# need to refrator real api call and grid view from udemy and home scrren
+
+# need to check validation in auth
+
+# token => share preferences
+
+# admin side

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:tech4u/controllers/drawer_menu_list.dart';
+import 'package:tech4u/main.dart';
 import 'package:tech4u/models/color_models.dart';
+import 'package:tech4u/pages/home.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -39,11 +39,40 @@ class MyDrawer extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: ListTile(
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => menu.screen,
-                        ),
-                      );
+                      switch (menu.menuName) {
+                        case "Home":
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return const MyApp();
+                              },
+                            ),
+                          );
+                          break;
+
+                        default:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Scaffold(
+                                appBar: AppBar(
+                                  backgroundColor: appBarColor,
+                                  leading: IconButton(
+                                    icon: const Icon(Icons.arrow_back),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  title: Text(
+                                    menu.menuName,
+                                    style: const TextStyle(
+                                        fontSize: 40, color: Colors.white),
+                                  ),
+                                ),
+                                body: menu.screen,
+                              ),
+                            ),
+                          );
+                      }
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
